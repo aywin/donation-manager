@@ -30,6 +30,13 @@ DB_PASSWORD = ""
 DB_NAME = "association_db"
 ```
 
+3. Credentials
+
+```
+Username: admin
+Password: 0
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
