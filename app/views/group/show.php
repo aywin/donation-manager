@@ -18,7 +18,7 @@
 		<tr>
 			<td><?=$member->id?></td>
 			<td><a href="<?=url('member/show/'.$member->id)?>"><?=$member->first_name . ' ' . $member->last_name?></a></td>
-			<td><?=date("F jS, Y", strtotime($member->birthday))?></td>
+			<td><?=humanDate($member->birthday)?></td>
 			<td>
 			<?php foreach ($member->phones() as $phone): ?>
 				<?=$phone->number?>

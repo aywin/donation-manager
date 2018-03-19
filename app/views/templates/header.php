@@ -44,7 +44,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control" name="search" placeholder="Chercher un membre">
 						</div>
-						<button type="submit" class="btn btn-default">Recherce</button>
+						<button type="submit" class="btn btn-default">Recherche</button>
 					</form>
 						<li><a href="<?=url('login/logout')?>">Se déconnecter</a></li>
 					</ul>

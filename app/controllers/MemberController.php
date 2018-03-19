@@ -56,11 +56,9 @@ class MemberController extends Controller {
 	public function store() {
 		if(requestMethod() == 'POST' && allSet() === true) {
 			$target = new Target;
-			$target->member = 1;
+			$target->member = true;
 			$id = $target->save();
-			echo "hello".$id;
-
-			echo $id;
+			
 			$member = new Member;
 			$member->id = $id;
 			$member->first_name = request('first_name');

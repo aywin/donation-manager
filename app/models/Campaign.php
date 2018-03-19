@@ -15,6 +15,6 @@ class Campaign extends Model {
 
 	public function years() {
 		$tableName = static::$tableName;
-		return static::queryAll("SELECT DISTINCT year FROM {$tableName}");
+		return Database::queryAll("SELECT DISTINCT year FROM {$tableName}");
 	}
 }

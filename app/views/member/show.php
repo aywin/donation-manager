@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td>Date de naissance</td>
-			<td><?=date("F jS, Y", strtotime($member->birthday))?></td>
+			<td><?=humanDate($member->birthday)?></td>
 		</tr>
 		<tr>
 			<td>Téléphone</td>
@@ -100,9 +100,9 @@
 				<tr>
 					<td><?=$deposit->id?></td>				
 					<td>$<?=$deposit->amount?></td>				
-					<td><?=date("F jS, Y", strtotime($deposit->date))?></td>		
+					<td><?=humanDate($deposit->date)?></td>		
 					<td><?=$solicitor->first_name . ' ' . $solicitor->last_name?></td>		
-					<td><?=date("F jS, Y", strtotime($deposit->sollicitation()->date))?></td>	
+					<td><?=humanDate($deposit->sollicitation()->date)?></td>	
 					<td class="actions">
 						<a href="<?=url('deposit/edit/'.$deposit->id)?>"><span class="glyphicon glyphicon-pencil"></span></a>
 						<a href="<?=url('deposit/destroy/'.$deposit->id)?>" class="confirmation"><span class="glyphicon glyphicon-remove"></span></a>
@@ -165,7 +165,7 @@
 			<tr>
 				<td><?=$deposit->id?></td>				
 				<td>$<?=$deposit->amount?></td>				
-				<td><?=date("F jS, Y", strtotime($deposit->date))?></td>		
+				<td><?=humanDate($deposit->date)?></td>		
 				<td><?=$solicitor->first_name . ' ' . $solicitor->last_name?></td>		
 				<td class="actions">
 					<a href="<?=url('deposit/edit/'.$deposit->id)?>"><span class="glyphicon glyphicon-pencil"></span></a>

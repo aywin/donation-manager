@@ -7,7 +7,7 @@
  */
 
 abstract class Database {
-	protected static $db;
+	private static $db;
 
 
 	public static function connect() {
@@ -33,6 +33,10 @@ abstract class Database {
 		}
 
 		return $objects;
+	}
+
+	public static function getPDO() {
+		return static::$db;
 	}
 
 	// public static function getParams($properties = []) {

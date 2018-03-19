@@ -35,7 +35,7 @@ class Member extends Model {
 		$query = "SELECT * FROM {$tableName} WHERE concat(first_name, ' ', last_name) LIKE ? OR concat(last_name, ' ', first_name) LIKE ?";
 		$search = '%'.trim($search).'%';
 		
-		return static::fetchAll($query, [$search, $search], 'Member');
+		return $this->dao->fetchAll($query, [$search, $search], 'Member');
 	}
 
 
@@ -43,7 +43,7 @@ class Member extends Model {
 		$primaryKey = static::$primaryKey;
 		$query = "SELECT SUM(deposits.amount) as amount FROM deposits LEFT JOIN sollicitations ON deposits.sollicitation_id = sollicitations.id LEFT JOIN targets ON targets.id = sollicitations.target_id WHERE targets.id = ? AND YEAR(deposits.date) = ? AND deposits.subscription = 1";
 
-		return static::query($query, [$this->$primaryKey, $year])->amount ?? 0;
+		return Database::query($query, [$this->$primaryKey, $year])->amount ?? 0;
 	}
 
 	public function amountRequired() {
@@ -52,13 +52,17 @@ class Member extends Model {
 
 		$query = "SELECT MAX(diplomas.amount) as amount FROM member_diploma LEFT JOIN {$diplomaTable} ON member_diploma.diploma_id = {$diplomaTable}.id WHERE member_diploma.member_id = ?";
 
-		return static::query($query, [$this->$primaryKey])->amount;
+		return Database::query($query, [$this->$primaryKey])->amount;
 	}
 
 	public static function getTotal($year) {
 		$query = "SELECT SUM(deposits.amount) as amount FROM deposits LEFT JOIN sollicitations ON deposits.sollicitation_id = sollicitations.id RIGHT JOIN members ON members.id = sollicitations.target_id WHERE YEAR(deposits.date) = ?";
 
-		return static::query($query, [$year])->amount ?? 0;
+		return Database::query($query, [$year])->amount ?? 0;
+	}
+
+	public static function lookFor($username, $password) {
+		return DaoImpl::getInstance()->lookFor($username, $password);
 	}
 
 }

@@ -18,6 +18,6 @@ class Group extends Model {
 		$primaryKey = static::$primaryKey;
 
 		$query = "SELECT COUNT(*) as count FROM members WHERE members.group_id = ?";
-		return static::query($query, [$this->$primaryKey])->count ?? 0;
+		return Database::query($query, [$this->$primaryKey])->count ?? 0;
 	}
 }

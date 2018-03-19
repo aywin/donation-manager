@@ -20,7 +20,7 @@ class Organization extends Model {
 	public static function getTotal($year) {
 		$query = "SELECT SUM(deposits.amount) as amount FROM deposits LEFT JOIN sollicitations ON deposits.sollicitation_id = sollicitations.id RIGHT JOIN organizations ON organizations.id = sollicitations.target_id WHERE YEAR(deposits.date) = ?";
 
-		return static::query($query, [$year])->amount ?? 0;
+		return Database::query($query, [$year])->amount ?? 0;
 	} 
 
 }
