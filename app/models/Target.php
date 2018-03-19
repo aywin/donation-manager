@@ -6,19 +6,22 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
 class Target extends Model {
 	static $tableName = "targets";
 
 	public function member() {
-		return $this->hasOne('Member', 'id');
+		return $this->hasOne(Member::class, 'id');
 	}
 
 	public function organization() {
-		return $this->hasOne('Organization', 'id');
+		return $this->hasOne(Organization::class, 'id');
 	}
 
 	public function deposits() {
-		return $this->hasMany('Deposit');
+		return $this->hasMany(Deposit::class);
 	}
 
 	public function isMember() {

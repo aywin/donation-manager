@@ -6,6 +6,9 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Models;
+
+
 abstract class Model {
 
 	public static $primaryKey = "id";

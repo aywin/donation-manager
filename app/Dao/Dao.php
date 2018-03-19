@@ -6,6 +6,9 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Dao;
+
+
 interface Dao {	
 
 	public function save($object, $child = null, $tableName = null);

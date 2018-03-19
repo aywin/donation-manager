@@ -6,6 +6,11 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Services;
+
+use App\Models\Member;
+
+
 class Session {
 
 	public static $keyName = "username";

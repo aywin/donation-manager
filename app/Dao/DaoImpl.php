@@ -6,6 +6,9 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Dao;
+
 class DaoImpl implements Dao {
 	private $db;
 	private static $instance;
@@ -85,7 +88,7 @@ class DaoImpl implements Dao {
 	}
 
 	public function deleteAssoc($primaryClass, $foreignClass, $properties) {
-		$tableName = strtolower($primaryClass) . '_' . strtolower($foreignClass);
+		$tableName = static::getFieldName($primaryClass) . '_' . static::getFieldName($foreignClass);
 		$keys = array_keys($properties);
 		$properties = array_values($properties);
 		$query = "DELETE FROM {$tableName} WHERE {$keys[0]} = ? AND {$keys[1]} = ?";
@@ -120,7 +123,7 @@ class DaoImpl implements Dao {
 		$class = get_class($object);
 		$tableName = $foreignClass::$tableName;
 		$primaryKey = $class::$primaryKey;
-		$foreignKey = $foreignKey ?? $class . '_' . $foreignClass::$primaryKey;
+		$foreignKey = $foreignKey ?? static::getFieldName($class) . '_' . $foreignClass::$primaryKey;
 		
 		$query = "SELECT * FROM {$tableName} WHERE {$foreignKey} = ?";		
 
@@ -133,7 +136,7 @@ class DaoImpl implements Dao {
 		$class = get_class($object);
 		$tableName = $foreignClass::$tableName;
 		$primaryKey = $class::$primaryKey;
-		$foreignKey = $foreignKey ?? $class . '_' . $foreignClass::$primaryKey;
+		$foreignKey = $foreignKey ?? static::getFieldName($class) . '_' . $foreignClass::$primaryKey;
 
 		$query = "SELECT * FROM {$tableName} WHERE {$foreignKey} = ?";		
 
@@ -171,7 +174,7 @@ class DaoImpl implements Dao {
 	public function belongsTo($object, $foreignClass, $foreignKey = null) {
 		$tableName = $foreignClass::$tableName;
 		$primaryKey = $foreignClass::$primaryKey;
-		$foreignKey = $foreignKey ?? strtolower($foreignClass) . '_' . $foreignClass::$primaryKey;
+		$foreignKey = $foreignKey ?? static::getFieldName($foreignClass) . '_' . $foreignClass::$primaryKey;
 
 		$query = "SELECT * FROM {$tableName} WHERE {$primaryKey} = ?";		
 
@@ -181,9 +184,9 @@ class DaoImpl implements Dao {
 
 	public function belongsToMany($object, $foreignClass, $pivotTable = null, $localPivotKey = null, $foreignPivotKey = null) {
 		$class = get_class($object);
-		$pivotTable = $pivotTable ?? $class . '_' . strtolower($foreignClass);
-		$localPivotKey = $localPivotKey ?? $class . '_' . $class::$primaryKey;
-		$foreignPivotKey = $foreignPivotKey ?? strtolower($foreignClass) . '_' . $foreignClass::$primaryKey;
+		$pivotTable = $pivotTable ?? static::getFieldName($class) . '_' . static::getFieldName($foreignClass);
+		$localPivotKey = $localPivotKey ?? static::getFieldName($class) . '_' . $class::$primaryKey;
+		$foreignPivotKey = $foreignPivotKey ?? static::getFieldName($foreignClass) . '_' . $foreignClass::$primaryKey;
 
 		$tableName = $foreignClass::$tableName;		
 		$primaryKey = $foreignClass::$primaryKey;
@@ -222,6 +225,11 @@ class DaoImpl implements Dao {
 		return $objects;
 	}
 
+	private static function getFieldName($string) {
+		$tmp = explode('\\', $string);
+		return strtolower(end($tmp));
+	}
+
 	public function count($class) {
 		$tableName = $class::$tableName;
 		$query = "SELECT COUNT(*) as count FROM {$tableName}";
@@ -239,6 +247,9 @@ class DaoImpl implements Dao {
 
 		return $stmt->fetchColumn();
 	}
+
+
+
 
 
 }

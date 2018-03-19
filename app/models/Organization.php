@@ -6,15 +6,20 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
+use App\Dao\Database;
+
 class Organization extends Model {
 	static $tableName = "organizations";
 
 	public function phones() {
-		return $this->hasMany('Phone', 'target_id');
+		return $this->hasMany(Phone::class, 'target_id');
 	}
 
 	public function deposits() {
-		return $this->hasManyThrough([["Deposit", "sollicitation_id"], ["Sollicitation", "target_id"]]);
+		return $this->hasManyThrough([[Deposit::class, "sollicitation_id"], [Sollicitation::class, "target_id"]]);
 	}
 
 	public static function getTotal($year) {

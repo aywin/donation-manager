@@ -6,6 +6,10 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Faculty;
+
 class FacultyController extends Controller {
 
 	public function index() {

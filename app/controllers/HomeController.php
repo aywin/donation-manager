@@ -6,6 +6,11 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Member;
+use App\Models\Organization;
+
 class HomeController extends Controller {
 
 	public function index() {

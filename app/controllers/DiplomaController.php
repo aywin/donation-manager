@@ -6,6 +6,10 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Diploma;
+
 class DiplomaController extends Controller {
 
 	public function index() {

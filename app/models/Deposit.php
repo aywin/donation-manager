@@ -6,6 +6,9 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
 class Deposit extends Model {
 	static $tableName = "deposits";
 
@@ -14,7 +17,7 @@ class Deposit extends Model {
 	}
 
 	public function sollicitation() {
-		return $this->belongsTo('Sollicitation');
+		return $this->belongsTo(Sollicitation::class);
 	}
 
 }

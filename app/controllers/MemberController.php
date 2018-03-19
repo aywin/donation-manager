@@ -6,6 +6,12 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Member;
+use App\Models\Group;
+use App\Models\Model;
+
 class MemberController extends Controller {
 
 	public function index() {

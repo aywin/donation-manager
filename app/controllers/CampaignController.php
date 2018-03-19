@@ -6,6 +6,11 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+
+use App\Models\Campaign;
+
 class CampaignController extends Controller {
 
 	public function index() {

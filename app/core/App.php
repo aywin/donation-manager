@@ -6,6 +6,7 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Core;
 
 class App {
 
@@ -18,14 +19,13 @@ class App {
 	public function __construct() {
 		$url = $this->parseUrl();
 
-		if(file_exists(static::$controllersDir.ucfirst(strtolower($url[0])).'Controller.php')) {
+		if(file_exists(static::$controllersDir.ucfirst(strtolower($url[0])).'Controller.php') && isset($url[0])) {
 			$this->controller = ucfirst(strtolower($url[0])).'Controller';
 			unset($url[0]);
 		}
 
-		require_once static::$controllersDir.$this->controller.'.php';
-
-		$this->controller = new $this->controller;
+		$controllerClass = 'App\\Controllers\\' . $this->controller;
+		$this->controller = new $controllerClass();
 
 		if(isset($url[1])) {
 			if(method_exists($this->controller, $url[1])) {
@@ -37,8 +37,6 @@ class App {
 		$this->params = $url ? array_values($url) : []; 
 
 		call_user_func_array([$this->controller, $this->method], $this->params); 
-
-
 
 	}
 

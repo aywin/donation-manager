@@ -19,11 +19,11 @@
         			<tbody>
         				<tr>
         					<td>Total des membres</td>
-        					<td><?=Member::count()?></td>
+        					<td><?=App\Models\Member::count()?></td>
         				</tr>
         				<tr>
         					<td>Total des organismes</td>
-        					<td><?=Organization::count()?></td>
+        					<td><?=App\Models\Organization::count()?></td>
         				</tr>
         			</tbody>
         		</table>

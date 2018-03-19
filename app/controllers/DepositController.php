@@ -6,6 +6,13 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Deposit;
+use App\Models\Sollicitation;
+use App\Models\Sheet;
+
+
 class DepositController extends Controller {
 
 	public function index() {
@@ -22,7 +29,7 @@ class DepositController extends Controller {
 	}
 
 	public function create($f_id,$s_id = 0) {
-		$sheet = sheet::find($f_id);
+		$sheet = Sheet::find($f_id);
 		$sollicitation = Sollicitation::find($s_id);
 		if($sollicitation) $target = $sollicitation->target();
 

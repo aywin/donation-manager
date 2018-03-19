@@ -6,27 +6,33 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
+use App\Dao\Database;
+use App\Dao\DaoImpl;
+
 class Member extends Model {
 	static $tableName = "members";
 
 	public function group() {
-		return $this->belongsTo('Group');
+		return $this->belongsTo(Group::class);
 	}
 
 	public function diplomas() {
-		return $this->belongsToMany('Diploma');
+		return $this->belongsToMany(Diploma::class);
 	}
 
 	public function sheets() {
-		return $this->hasMany('Sheet');
+		return $this->hasMany(Sheet::class);
 	}
 
 	public function deposits() {		
-		return $this->hasManyThrough([["Deposit", "sollicitation_id"], ["Sollicitation", "target_id"]]);
+		return $this->hasManyThrough([[Deposit::class, "sollicitation_id"], [Sollicitation::class, "target_id"]]);
 	}
 
 	public function phones() {
-		return $this->hasMany('Phone', 'target_id');
+		return $this->hasMany(Phone::class, 'target_id');
 	}
 
 	public function search($search) {

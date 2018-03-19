@@ -6,6 +6,13 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Controllers;
+
+use App\Models\Sollicitation;
+use App\Models\Organization;
+use App\Models\Sheet;
+use App\Models\Member;
+
 class SollicitationController extends Controller {
 
 	public function index() {

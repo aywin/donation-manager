@@ -6,6 +6,10 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+namespace App\Dao;
+
+use PDO;
+
 abstract class Database {
 	private static $db;
 

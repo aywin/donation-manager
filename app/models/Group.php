@@ -6,11 +6,16 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
+use App\Dao\Database;
+
 class Group extends Model {
 	static $tableName = "groups";
 
 	public function members() {
-		return $this->hasMany('Member');
+		return $this->hasMany(Member::class);
 	}
 
 	public function countMembers() {

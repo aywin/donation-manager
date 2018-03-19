@@ -6,27 +6,32 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+
+namespace App\Models;
+
+use App\Dao\Database;
+
 class Sheet extends Model {
 	static $tableName = "sheets";
 
 	public function campaign() {
-		return $this->belongsTo('Campaign');
+		return $this->belongsTo(Campaign::class);
 	}
 
 	public function member() {
-		return $this->belongsTo('Member');
+		return $this->belongsTo(Member::class);
 	}
 
 	public function sollicitations() {
-		return $this->hasMany('Sollicitation');
+		return $this->hasMany(Sollicitation::class);
 	}
 
 	public function targets() {
-		return $this->belongsToMany('Target', 'sollicitations');
+		return $this->belongsToMany(Target::class, 'sollicitations');
 	}
 
 	public function deposits() {
-		return $this->hasManyThrough([["Deposit", "sollicitation_id"], ["Sollicitation", "sheet_id"]]);
+		return $this->hasManyThrough([[Deposit::class, "sollicitation_id"], [Sollicitation::class, "sheet_id"]]);
 	}
 
 	public function getSum() {
