@@ -6,11 +6,12 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
-namespace App\Dao;
+namespace Core\Database;
 
+use \Core\Interfaces\IDatabase;
 use PDO;
 
-abstract class Database {
+class MysqlDatabase implements IDatabase {
 	private static $db;
 
 

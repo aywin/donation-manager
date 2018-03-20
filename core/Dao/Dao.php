@@ -7,14 +7,17 @@
  */
 
 
-namespace App\Dao;
+namespace Core\Dao;
 
-class DaoImpl implements Dao {
+use \Core\Interfaces\IDao;
+use \Core\Database\MysqlDatabase;
+
+class Dao implements IDao {
 	private $db;
 	private static $instance;
 
 	private function __construct() {
-		$this->db = Database::getPDO();
+		$this->db = MysqlDatabase::getPDO();
 	}
 
 	public static function getInstance() {
