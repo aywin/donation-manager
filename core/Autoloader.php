@@ -6,7 +6,7 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
-namespace App\Core;
+namespace Core;
 
 
 class Autoloader {
