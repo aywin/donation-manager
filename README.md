@@ -19,15 +19,15 @@ MySQL 5
 2. Make changes in the .env file
 
 ```
-[website]
-PUBLIC_URL = "http://localhost/association/public"
-LC_TIME = "fra_fra"
 
-[database]
-DB_HOST = "localhost"
-DB_USER = "root"
-DB_PASSWORD = ""
-DB_NAME = "association_db"
+PUBLIC_URL=http://localhost/association/public
+LC_TIME=fra_fra
+
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=association_db
 ```
 
 3. Credentials
