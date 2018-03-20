@@ -6,6 +6,13 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
+// Env File
+
+function env($key, $default = null) {
+	return \Core\Config::getInstance()->getParameter($key) ?? $default;
+}
+
+
 // URLs
 
 function asset($path) {

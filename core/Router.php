@@ -1,6 +1,6 @@
 <?php
 /**
- * Projet, Base de données
+ * Projet, Base de donnÃ©es
  *
  * @package  Project
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
