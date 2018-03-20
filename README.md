@@ -19,7 +19,6 @@ MySQL 5
 2. Make changes in the .env file
 
 ```
-
 PUBLIC_URL=http://localhost/association/public
 LC_TIME=fra_fra
 
