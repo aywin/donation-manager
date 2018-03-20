@@ -6,9 +6,9 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
-namespace App;
+namespace Core;
 
-class App {
+class Router {
 
 	protected $controller = 'HomeController';
 	protected $method = "index";
