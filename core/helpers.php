@@ -9,18 +9,25 @@
 // Env File
 
 function env($key, $default = null) {
-	return \Core\Config::getInstance()->getParameter($key) ?? $default;
+	return Core\Config::getInstance()->get($key) ?? $default;
 }
 
+// Classes
+
+function class_basename($object) {
+	$str = get_class($object);
+	$str = explode('\\', $str);
+	return end($str);
+}
 
 // URLs
 
 function asset($path) {
-	return PUBLIC_URL.'/'.$path;
+	return env('PUBLIC_URL').'/'.$path;
 }
 
 function url($path) {
-	return PUBLIC_URL.'/'.$path;
+	return env('PUBLIC_URL').'/'.$path;
 }
 
 // Views
@@ -45,7 +52,7 @@ function request($key) {
 }
 
 function redirect($path) {
-	header("Location: ".PUBLIC_URL.'/'.$path);
+	header("Location: ".env('PUBLIC_URL').'/'.$path);
 	die();
 }
 

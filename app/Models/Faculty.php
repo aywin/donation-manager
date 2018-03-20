@@ -9,8 +9,10 @@
 
 namespace App\Models;
 
+use Core\Database\Model;
+
 class Faculty extends Model {
-	static $tableName = "faculties";
+	protected $tableName = "faculties";
 
 	public function departments() {
 		return $this->hasMany(Department::class);

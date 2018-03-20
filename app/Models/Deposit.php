@@ -9,8 +9,10 @@
 
 namespace App\Models;
 
+use Core\Database\Model;
+
 class Deposit extends Model {
-	static $tableName = "deposits";
+	protected $tableName = "deposits";
 
 	public function target() {
 		return $this->sollicitation()->target();

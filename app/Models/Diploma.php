@@ -9,8 +9,10 @@
 
 namespace App\Models;
 
+use Core\Database\Model;
+
 class Diploma extends Model {
-	static $tableName = "diplomas";
+	protected $tableName = "diplomas";
 
 	public function department() {
 		return $this->belongsTo(Department::class);

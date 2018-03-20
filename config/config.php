@@ -7,5 +7,5 @@
  */
 
 return [
-	"env" => __DIR__ . '../../.env'
+	"env" => __DIR__ . '/../.env'
 ];

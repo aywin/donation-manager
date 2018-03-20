@@ -8,7 +8,6 @@
 
 namespace App\Services;
 
-use App\Models\Member;
 
 
 class Session {
@@ -16,7 +15,7 @@ class Session {
 	public static $keyName = "username";
 
 	public static function lookFor($username, $password) {
-		return Member::lookFor($username, $password);
+		return Auth::lookFor($username, $password);
 	}
 
 	public static function check() {

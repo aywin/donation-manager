@@ -8,15 +8,16 @@
 
 namespace Core\Database;
 
-use \Core\Interfaces\IDatabase;
+use Core\Interfaces\IDatabase;
+use Core\Config;
 use PDO;
 
-class MysqlDatabase implements IDatabase {
+class Database implements IDatabase {
 	private static $db;
 
-
 	public static function connect() {
-		static::$db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);		
+		$connectionString = 'mysql:host='. env('DB_HOST') . ';dbname=' . env('DB_NAME') ;
+		static::$db = new PDO($connectionString, env('DB_USER'), env('DB_PASSWORD'));		
 		static::$db->exec('SET NAMES utf8');		
 	}
 

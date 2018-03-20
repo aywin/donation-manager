@@ -9,10 +9,11 @@
 
 namespace App\Models;
 
-use App\Dao\Database;
+use Core\Database\Model;
+use Core\Database\Database;
 
 class Sheet extends Model {
-	static $tableName = "sheets";
+	protected $tableName = "sheets";
 
 	public function campaign() {
 		return $this->belongsTo(Campaign::class);
@@ -35,10 +36,9 @@ class Sheet extends Model {
 	}
 
 	public function getSum() {
-		$primaryKey = static::$primaryKey;
 		$query = "SELECT SUM(deposits.amount) as amount FROM sollicitations LEFT JOIN deposits ON sollicitations.id = deposits.sollicitation_id WHERE sollicitations.sheet_id = ?";
 
-		return Database::query($query, [$this->$primaryKey])->amount ?? 0;
+		return Database::query($query, [$this->getId()])->amount ?? 0;
 	}
 
 }

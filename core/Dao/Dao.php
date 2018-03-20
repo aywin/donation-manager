@@ -9,34 +9,34 @@
 
 namespace Core\Dao;
 
-use \Core\Interfaces\IDao;
-use \Core\Database\MysqlDatabase;
+use Core\Interfaces\IDao;
+use Core\Database\Database;
 
 class Dao implements IDao {
 	private $db;
 	private static $instance;
 
 	private function __construct() {
-		$this->db = MysqlDatabase::getPDO();
+		$this->db = Database::getPDO();
 	}
 
 	public static function getInstance() {
-		if(!isset(static::$instance))
-			static::$instance = new DaoImpl();
+		return static::$instance ?? new Dao();
+	}
 
-		return static::$instance;
+	public function getDB() {
+		return $this->db;
 	}
 
 	public function save($object, $child = null, $tableName = null) {
-		$class = get_class($object);
-		$tableName = $tableName ?? $class::$tableName;
-		$primaryKey = $class::$primaryKey;
+		$tableName = $tableName ?? $object->getTableName();
+		$primaryKey = $object->getPrimaryKey();
 		$properties = $object->getProperties($child);
 
 		$params = [];
 
 
-		if($object->getPrimaryKey() AND !$child) {
+		if($object->getId() AND !$child) {
 			$query = "UPDATE {$tableName} SET ";
 
 			foreach($properties as $key => $value) {
@@ -45,7 +45,7 @@ class Dao implements IDao {
 				$params[] = $value;
 			}
 
-			$params[] = $object->getPrimaryKey();
+			$params[] = $object->getId();
 			$query .= " WHERE {$primaryKey} = ?";
 		} else {
 			$fields = '';
@@ -66,21 +66,20 @@ class Dao implements IDao {
 
 
 		if ($stmt->execute($params)) 
-			return ($object->getPrimaryKey() ?? $child) ?? $this->db->lastInsertId();
+			return ($object->getId() ?? $child) ?? $this->db->lastInsertId();
 		else 
 			return false;
 
 	}
 
 	public function delete($object) {
-		$class = get_class($object);
-		$tableName = $class::$tableName;
-		$primaryKey = $class::$primaryKey;
+		$tableName = $object->getTableName();
+		$primaryKey = $object->getPrimaryKey();
 
 		$query = "DELETE FROM {$tableName} WHERE {$primaryKey} = :id";
 
 		$stmt = $this->db->prepare($query);
-		$stmt->bindParam(':id', $object->getPrimaryKey(), \PDO::PARAM_INT);
+		$stmt->bindParam(':id', $object->getId(), \PDO::PARAM_INT);
 		return $stmt->execute();
 	}
 
@@ -90,8 +89,7 @@ class Dao implements IDao {
 		return $stmt->execute($properties);
 	}
 
-	public function deleteAssoc($primaryClass, $foreignClass, $properties) {
-		$tableName = static::getFieldName($primaryClass) . '_' . static::getFieldName($foreignClass);
+	public function deleteAssoc($tableName, $properties) {
 		$keys = array_keys($properties);
 		$properties = array_values($properties);
 		$query = "DELETE FROM {$tableName} WHERE {$keys[0]} = ? AND {$keys[1]} = ?";
@@ -99,67 +97,65 @@ class Dao implements IDao {
 		return $stmt->execute($properties);
 	}
 
-	public function find($class, $id) {
-		$tableName = $class::$tableName;
-		$primaryKey =  $class::$primaryKey;
+	public function find($model, $id) {
+		$tableName = $model->getTableName();
+		$primaryKey =  $model->getPrimaryKey();
 
 		$query = "SELECT * FROM {$tableName} WHERE {$primaryKey} = ? LIMIT 1";
 
-		return $this->fetch($query, [$id], $class);
+		return $this->fetch($query, [$id], get_class($model));
 	}
 
 
-	public function all($class) {
-		$tableName = $class::$tableName;
-		$primaryKey = $class::$primaryKey;
+	public function all($model) {
+		$tableName = $model->getTableName();
+		$primaryKey = $model->getPrimaryKey();
 		$objects = [];
 
 		$query = "SELECT * FROM {$tableName} ORDER BY {$primaryKey} DESC";
 
 		$stmt = $this->db->query($query);
 
-		return $this->fetchAll($query, [], $class);
+		return $this->fetchAll($query, [], get_class($model));
 	}
 
 
-	public function hasOne($object, $foreignClass, $foreignKey = null) {
-		$class = get_class($object);
-		$tableName = $foreignClass::$tableName;
-		$primaryKey = $class::$primaryKey;
-		$foreignKey = $foreignKey ?? static::getFieldName($class) . '_' . $foreignClass::$primaryKey;
+	public function hasOne($object, $foreignObject, $foreignKey = null) {
+		$tableName = $foreignObject->getTableName();
+		$primaryKey = $object->getPrimaryKey();
+		$foreignKey = $foreignKey ?? $object->getPivotName() . '_' . $foreignObject->getPrimaryKey();
 		
 		$query = "SELECT * FROM {$tableName} WHERE {$foreignKey} = ?";		
 
 
-		return $this->fetch($query, [$object->$primaryKey], $foreignClass);
+		return $this->fetch($query, [$object->getId()], get_class($foreignObject));
 	}
 
 
-	public function hasMany($object, $foreignClass, $foreignKey = null) {
-		$class = get_class($object);
-		$tableName = $foreignClass::$tableName;
-		$primaryKey = $class::$primaryKey;
-		$foreignKey = $foreignKey ?? static::getFieldName($class) . '_' . $foreignClass::$primaryKey;
+	public function hasMany($object, $foreignObject, $foreignKey = null) {
+		$tableName = $foreignObject->getTableName();
+		$primaryKey = $object->getPrimaryKey();
+		$foreignKey = $foreignKey ?? $object->getPivotName() . '_' . $foreignObject->getPrimaryKey();
 
 		$query = "SELECT * FROM {$tableName} WHERE {$foreignKey} = ?";		
 
-		return static::fetchAll($query, [$object->$primaryKey], $foreignClass);
+		return static::fetchAll($query, [$object->getId()], get_class($foreignObject));
 	}
 
 	public function hasManyThrough($object, $tables = [], $condition = null) {
-		$class = get_class($object);
-		$foreignClass = $tables[0][0];
-		$tableName = $foreignClass::$tableName;
-		$primaryKey = $class::$primaryKey;
+		$foreignObject = new $tables[0][0];
+
+		$tableName = $foreignObject->getTableName();
+		$primaryKey = $object->getPrimaryKey();
 
 		$query = "SELECT {$tableName}.* FROM  {$tableName}";
 
 		for ($i = 1; $i < sizeof($tables); $i++) {
-			$leftTable = $tables[$i-1][0]::$tableName;
-			$rightTable = $tables[$i][0]::$tableName;
+			$leftTable = (new $tables[$i-1][0])->getTableName();
+			$rightTable = (new $tables[$i][0])->getTableName();
 
 			$leftKey = $tables[$i-1][1];
-			$rightKey =$tables[$i][0]::$primaryKey;
+			$rightKey = (new $tables[$i][0])->getPrimaryKey();
 
 			$query .= " LEFT JOIN {$rightTable} ON {$leftTable}.{$leftKey}={$rightTable}.{$rightKey}";
 
@@ -169,34 +165,33 @@ class Dao implements IDao {
 		$query .= " WHERE {$rightTable}.{$rightKey} = ?";
 		$query .= $condition ? ' AND '.$condition : '';
 
-		return $this->fetchAll($query, [$object->$primaryKey], $foreignClass);
+		return $this->fetchAll($query, [$object->getId()], get_class($foreignObject));
 
 	}
 
 
-	public function belongsTo($object, $foreignClass, $foreignKey = null) {
-		$tableName = $foreignClass::$tableName;
-		$primaryKey = $foreignClass::$primaryKey;
-		$foreignKey = $foreignKey ?? static::getFieldName($foreignClass) . '_' . $foreignClass::$primaryKey;
+	public function belongsTo($object, $foreignObject, $foreignKey = null) {
+		$tableName = $foreignObject->getTableName();
+		$primaryKey = $foreignObject->getPrimaryKey();
+		$foreignKey = $foreignKey ?? $foreignObject->getPivotName() . '_' . $foreignObject->getPrimaryKey();
 
 		$query = "SELECT * FROM {$tableName} WHERE {$primaryKey} = ?";		
 
-		return $this->fetch($query, [$object->$foreignKey], $foreignClass);
+		return $this->fetch($query, [$object->$foreignKey], get_class($foreignObject));
 	}		
 
 
-	public function belongsToMany($object, $foreignClass, $pivotTable = null, $localPivotKey = null, $foreignPivotKey = null) {
-		$class = get_class($object);
-		$pivotTable = $pivotTable ?? static::getFieldName($class) . '_' . static::getFieldName($foreignClass);
-		$localPivotKey = $localPivotKey ?? static::getFieldName($class) . '_' . $class::$primaryKey;
-		$foreignPivotKey = $foreignPivotKey ?? static::getFieldName($foreignClass) . '_' . $foreignClass::$primaryKey;
+	public function belongsToMany($object, $foreignObject, $pivotTable = null, $localPivotKey = null, $foreignPivotKey = null) {
+		$pivotTable = $pivotTable ?? $object->getPivotName() . '_' . $foreignObject->getPivotName();
+		$localPivotKey = $localPivotKey ?? $object->getPivotName() . '_' . $object->getPrimaryKey();
+		$foreignPivotKey = $foreignPivotKey ?? $foreignObject->getPivotName() . '_' . $foreignObject->getPrimaryKey();
 
-		$tableName = $foreignClass::$tableName;		
-		$primaryKey = $foreignClass::$primaryKey;
+		$tableName = $foreignObject->getTableName();		
+		$primaryKey = $foreignObject->getPrimaryKey();
 
 		$query = "SELECT {$tableName}.*, {$pivotTable}.* FROM {$tableName} INNER JOIN {$pivotTable} ON {$pivotTable}.{$foreignPivotKey} = {$tableName}.{$primaryKey} AND {$pivotTable}.{$localPivotKey} = ?";
 
-		return $this->fetchAll($query, [$object->$primaryKey], $foreignClass);
+		return $this->fetchAll($query, [$object->getId()], get_class($foreignObject));
 	}
 
 	public function fetch($query, $params = [], $className) {
@@ -228,16 +223,12 @@ class Dao implements IDao {
 		return $objects;
 	}
 
-	private static function getFieldName($string) {
-		$tmp = explode('\\', $string);
-		return strtolower(end($tmp));
-	}
-
-	public function count($class) {
-		$tableName = $class::$tableName;
+	public function count($model) {
+		$tableName = $model->getTableName();
 		$query = "SELECT COUNT(*) as count FROM {$tableName}";
 		return Database::query($query)->count;
 	}	
+
 
 
 	public function lookFor($username, $password) {
@@ -250,9 +241,5 @@ class Dao implements IDao {
 
 		return $stmt->fetchColumn();
 	}
-
-
-
-
 
 }

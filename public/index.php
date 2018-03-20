@@ -1,6 +1,6 @@
 <?php
 
-require_once '../app/init.php';
+require_once '../core/init.php';
 
-$app = new App\Core\App;
+$app = new App\App;
 

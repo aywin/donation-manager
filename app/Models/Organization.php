@@ -9,10 +9,11 @@
 
 namespace App\Models;
 
-use App\Dao\Database;
+use Core\Database\Model;
+use Core\Database\Database;
 
 class Organization extends Model {
-	static $tableName = "organizations";
+	protected $tableName = "organizations";
 
 	public function phones() {
 		return $this->hasMany(Phone::class, 'target_id');

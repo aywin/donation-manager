@@ -10,22 +10,25 @@ namespace Core;
 
 use Core\Interfaces\IConfig;
 
-class ConfigDotEnv implements IConfig {
+class Config implements IConfig {
 
-	private static instance;
+	private static $instance;
 	private $settings;
 
 	private function __construct() {
-		$file = require(__DIR__ . '../config/config.php')['env'];
-		$this->settings = $this->parseDotEnv($file);
+		$file = require __DIR__ . '/../config/config.php';
+		$file = $file['env'];
+		$this->settings = $this->praseSettings($file);
+		// var_dump($this->settings);
+		// die();
 	}
 
-	public function getInstance() {
-		return static::instance ?? new Config();
+	public static function getInstance() {
+		return static::$instance ?? new Config();
 	}
 
 	public function get($key) {
-		return $settings[$key] ?? null;
+		return $this->settings[$key] ?? null;
 	}
 
 	private function praseSettings($file) {

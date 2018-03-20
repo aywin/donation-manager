@@ -6,17 +6,17 @@
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 
-use Core\Dao;
-use App\Models;
-use App\Services;
+use Core\Autoloader;
+use Core\Database\Database;
+use App\Services\Session;
 
-require_once __DIR__ . '../config/config.php';
-require_once __DIR__ . '/helpers.php';
+
 require_once __DIR__ . '/Autoloader.php';
+Autoloader::register();
+require_once __DIR__ . '/helpers.php';
 
-Core\Autoloader::register();
+setlocale(LC_TIME, env('LC_TIME'));
 
-Database\MysqlDatabase::connect();
-Models\Model::staticInit(Dao\Dao::getInstance());
-Services\Session::start();
 
+Database::connect();
+Session::start();

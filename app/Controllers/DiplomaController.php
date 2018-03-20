@@ -9,6 +9,8 @@
 namespace App\Controllers;
 
 use App\Models\Diploma;
+use App\Models\Faculty;
+
 
 class DiplomaController extends Controller {
 

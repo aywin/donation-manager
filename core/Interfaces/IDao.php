@@ -9,7 +9,7 @@
 namespace Core\Interfaces;
 
 
-interface Dao {	
+interface IDao {	
 
 	public function save($object, $child = null, $tableName = null);
 
@@ -17,19 +17,19 @@ interface Dao {
 
 	public function addAssoc($tableName, $properties);
 
-	public function deleteAssoc($primaryClass, $foreignClass, $properties);
+	public function deleteAssoc($tableName, $properties);
 
-	public function find($class, $id);
+	public function find($model, $id);
 
-	public function all($class);
+	public function all($model);
 	
-	public function hasOne($object, $foreignClass, $foreignKey = null);
+	public function hasOne($object, $foreignObject, $foreignKey = null);
 
-	public function hasMany($object, $foreignClass, $foreignKey = null);
+	public function hasMany($object, $foreignObject, $foreignKey = null);
 
 	public function hasManyThrough($object, $tables = [], $condition = null);
 
-	public function belongsTo($object, $foreignClass, $foreignKey = null);
+	public function belongsTo($object, $foreignObject, $foreignKey = null);
 
-	public function belongsToMany($object, $foreignClass, $pivotTable = null, $localPivotKey = null, $foreignPivotKey = null);
+	public function belongsToMany($object, $foreignObject, $pivotTable = null, $localPivotKey = null, $foreignPivotKey = null);
 }

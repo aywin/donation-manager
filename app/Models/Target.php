@@ -9,8 +9,10 @@
 
 namespace App\Models;
 
+use Core\Database\Model;
+
 class Target extends Model {
-	static $tableName = "targets";
+	protected $tableName = "targets";
 
 	public function member() {
 		return $this->hasOne(Member::class, 'id');

@@ -9,6 +9,8 @@
 namespace App\Controllers;
 
 use App\Models\Department;
+use App\Models\Faculty;
+
 
 class DepartmentController extends Controller {
 

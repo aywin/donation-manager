@@ -9,20 +9,18 @@
 
 namespace App\Models;
 
-use App\Dao\Database;
+use Core\Database\Model;
+use Core\Database\Database;
 
 class Group extends Model {
-	static $tableName = "groups";
+	protected $tableName = "groups";
 
 	public function members() {
 		return $this->hasMany(Member::class);
 	}
 
 	public function countMembers() {
-		$tableName = static::$tableName;
-		$primaryKey = static::$primaryKey;
-
 		$query = "SELECT COUNT(*) as count FROM members WHERE members.group_id = ?";
-		return Database::query($query, [$this->$primaryKey])->count ?? 0;
+		return Database::query($query, [$this->getId()])->count ?? 0;
 	}
 }

@@ -4,7 +4,6 @@
 
 
 <a href="<?=url('sheet/create')?>" class="btn btn-primary">Nouvelle fiche de sollicitation</a>
-<a href="<?=url('sollicitation/create')?>" class="btn btn-success">Ajouter une sollicitation</a>
 
 <hr />
 

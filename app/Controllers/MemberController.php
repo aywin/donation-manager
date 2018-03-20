@@ -8,9 +8,12 @@
 
 namespace App\Controllers;
 
+use Core\Database\Model;
 use App\Models\Member;
 use App\Models\Group;
-use App\Models\Model;
+use App\Models\Campaign;
+use App\Models\Faculty;
+
 
 class MemberController extends Controller {
 
@@ -51,7 +54,7 @@ class MemberController extends Controller {
 	public function removeDiploma($member_id, $diploma_id) {
 		$member_diploma['member_id'] = $member_id;
 		$member_diploma['diploma_id'] = $diploma_id;
-		if(Model::deleteAssoc('member', 'diploma', $member_diploma)) return redirect('member/show/'.$member_diploma['member_id']);
+		if(Model::deleteAssoc('member_diploma', $member_diploma)) return redirect('member/show/'.$member_diploma['member_id']);
 	}
 
 	public function create() {
