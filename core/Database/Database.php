@@ -1,8 +1,7 @@
 <?php
 /**
- * Projet, Base de données
  *
- * @package  Project
+ * @package  DonationManager
  * @author   Yassine Benabbou <benabbou.yassine@yahoo.fr>
  */
 

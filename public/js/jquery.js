@@ -879,8 +879,7 @@ function Sizzle( selector, context, results, seed ) {
 	return select( selector.replace( rtrim, "$1" ), context, results, seed );
 }
 
-/**
- * Create key-value caches of limited size
+/** * Create key-value caches of limited size
  * @returns {Function(string, Object)} Returns the Object data after storing it on itself with
  *	property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
  *	deleting the oldest entry
@@ -899,8 +898,7 @@ function createCache() {
 	return cache;
 }
 
-/**
- * Mark a function for special use by Sizzle
+/** * Mark a function for special use by Sizzle
  * @param {Function} fn The function to mark
  */
 function markFunction( fn ) {
@@ -908,8 +906,7 @@ function markFunction( fn ) {
 	return fn;
 }
 
-/**
- * Support testing using an element
+/** * Support testing using an element
  * @param {Function} fn Passed the created div and expects a boolean result
  */
 function assert( fn ) {
@@ -929,8 +926,7 @@ function assert( fn ) {
 	}
 }
 
-/**
- * Adds the same handler for all of the specified attrs
+/** * Adds the same handler for all of the specified attrs
  * @param {String} attrs Pipe-separated list of attributes
  * @param {Function} handler The method that will be applied
  */
@@ -943,8 +939,7 @@ function addHandle( attrs, handler ) {
 	}
 }
 
-/**
- * Checks document order of two siblings
+/** * Checks document order of two siblings
  * @param {Element} a
  * @param {Element} b
  * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
@@ -972,8 +967,7 @@ function siblingCheck( a, b ) {
 	return a ? 1 : -1;
 }
 
-/**
- * Returns a function to use in pseudos for input types
+/** * Returns a function to use in pseudos for input types
  * @param {String} type
  */
 function createInputPseudo( type ) {
@@ -983,8 +977,7 @@ function createInputPseudo( type ) {
 	};
 }
 
-/**
- * Returns a function to use in pseudos for buttons
+/** * Returns a function to use in pseudos for buttons
  * @param {String} type
  */
 function createButtonPseudo( type ) {
@@ -994,8 +987,7 @@ function createButtonPseudo( type ) {
 	};
 }
 
-/**
- * Returns a function to use in pseudos for positionals
+/** * Returns a function to use in pseudos for positionals
  * @param {Function} fn
  */
 function createPositionalPseudo( fn ) {
@@ -1016,8 +1008,7 @@ function createPositionalPseudo( fn ) {
 	});
 }
 
-/**
- * Checks a node for validity as a Sizzle context
+/** * Checks a node for validity as a Sizzle context
  * @param {Element|Object=} context
  * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
@@ -1028,8 +1019,7 @@ function testContext( context ) {
 // Expose support vars for convenience
 support = Sizzle.support = {};
 
-/**
- * Detects XML nodes
+/** * Detects XML nodes
  * @param {Element|Object} elem An element or a document
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
@@ -1040,8 +1030,7 @@ isXML = Sizzle.isXML = function( elem ) {
 	return documentElement ? documentElement.nodeName !== "HTML" : false;
 };
 
-/**
- * Sets document-related variables once based on the current document
+/** * Sets document-related variables once based on the current document
  * @param {Element|Object} [doc] An element or document object to use to set the document
  * @returns {Object} Returns the current document
  */
@@ -1473,8 +1462,7 @@ Sizzle.error = function( msg ) {
 	throw new Error( "Syntax error, unrecognized expression: " + msg );
 };
 
-/**
- * Document sorting and removing duplicates
+/** * Document sorting and removing duplicates
  * @param {ArrayLike} results
  */
 Sizzle.uniqueSort = function( results ) {
@@ -1506,8 +1494,7 @@ Sizzle.uniqueSort = function( results ) {
 	return results;
 };
 
-/**
- * Utility function for retrieving the text value of an array of DOM nodes
+/** * Utility function for retrieving the text value of an array of DOM nodes
  * @param {Array|Element} elem
  */
 getText = Sizzle.getText = function( elem ) {
@@ -2473,8 +2460,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 	return cached;
 };
 
-/**
- * A low-level selection function that works with Sizzle's compiled
+/** * A low-level selection function that works with Sizzle's compiled
  *  selector functions
  * @param {String|Function} selector A selector or a pre-compiled
  *  selector function built with Sizzle.compile
@@ -3450,8 +3436,7 @@ jQuery.extend({
 	}
 });
 
-/**
- * Clean-up method for dom ready events
+/** * Clean-up method for dom ready events
  */
 function detach() {
 	if ( document.addEventListener ) {
@@ -3464,8 +3449,7 @@ function detach() {
 	}
 }
 
-/**
- * The ready event handler and self cleanup method
+/** * The ready event handler and self cleanup method
  */
 function completed() {
 	// readyState === "complete" is good enough for us to call the dom ready in oldIE
@@ -3611,8 +3595,7 @@ jQuery(function() {
 })();
 
 
-/**
- * Determines whether an object can have data
+/** * Determines whether an object can have data
  */
 jQuery.acceptData = function( elem ) {
 	var noData = jQuery.noData[ (elem.nodeName + " ").toLowerCase() ],
@@ -5998,8 +5981,7 @@ jQuery.each({
 var iframe,
 	elemdisplay = {};
 
-/**
- * Retrieve the actual display of a element
+/** * Retrieve the actual display of a element
  * @param {String} name nodeName of the element
  * @param {Object} doc Document object
  */
@@ -6022,8 +6004,7 @@ function actualDisplay( name, doc ) {
 	return display;
 }
 
-/**
- * Try to determine the default display value of an element
+/** * Try to determine the default display value of an element
  * @param {String} nodeName
  */
 function defaultDisplay( nodeName ) {
@@ -9933,8 +9914,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 // Keep a copy of the old load method
 var _load = jQuery.fn.load;
 
-/**
- * Load a url into a page
+/** * Load a url into a page
  */
 jQuery.fn.load = function( url, params, callback ) {
 	if ( typeof url !== "string" && _load ) {
@@ -10008,8 +9988,7 @@ jQuery.expr.filters.animated = function( elem ) {
 
 var docElem = window.document.documentElement;
 
-/**
- * Gets a window from an element
+/** * Gets a window from an element
  */
 function getWindow( elem ) {
 	return jQuery.isWindow( elem ) ?

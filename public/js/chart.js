@@ -532,8 +532,7 @@ Color.prototype = {
 		return this;
 	},
 
-	/**
-	 * Ported from sass implementation in C
+	/**	 * Ported from sass implementation in C
 	 * https://github.com/sass/libsass/blob/0e6b4a2850092356aa3ece07c6b249f0221caced/functions.cpp#L209
 	 */
 	mix: function (mixinColor, weight) {
@@ -4938,8 +4937,7 @@ function toISOString() {
     return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 }
 
-/**
- * Return a human readable representation of a moment that can
+/** * Return a human readable representation of a moment that can
  * also be evaluated to get a new moment which is the same
  *
  * @link https://nodejs.org/dist/latest/docs/api/util.html#util_custom_inspect_function_on_objects
@@ -6127,8 +6125,7 @@ return hooks;
 })));
 
 },{}],7:[function(require,module,exports){
-/**
- * @namespace Chart
+/** * @namespace Chart
  */
 var Chart = require(28)();
 
@@ -6403,8 +6400,7 @@ module.exports = function(Chart) {
 			rectangle.pivot();
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		updateElementGeometry: function(rectangle, index, reset) {
 			var me = this;
@@ -6424,36 +6420,31 @@ module.exports = function(Chart) {
 			model.width = horizontal? undefined : ipixels.size;
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getValueScaleId: function() {
 			return this.getMeta().yAxisID;
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getIndexScaleId: function() {
 			return this.getMeta().xAxisID;
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getValueScale: function() {
 			return this.getScaleForId(this.getValueScaleId());
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getIndexScale: function() {
 			return this.getScaleForId(this.getIndexScaleId());
 		},
 
-		/**
-		 * Returns the effective number of stacks based on groups and bar visibility.
+		/**		 * Returns the effective number of stacks based on groups and bar visibility.
 		 * @private
 		 */
 		getStackCount: function(last) {
@@ -6478,16 +6469,14 @@ module.exports = function(Chart) {
 			return stacks.length;
 		},
 
-		/**
-		 * Returns the stack index for the given dataset based on groups and bar visibility.
+		/**		 * Returns the stack index for the given dataset based on groups and bar visibility.
 		 * @private
 		 */
 		getStackIndex: function(datasetIndex) {
 			return this.getStackCount(datasetIndex) - 1;
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getRuler: function() {
 			var me = this;
@@ -6516,8 +6505,7 @@ module.exports = function(Chart) {
 			};
 		},
 
-		/**
-		 * Note: pixel values are not clamped to the scale area.
+		/**		 * Note: pixel values are not clamped to the scale area.
 		 * @private
 		 */
 		calculateBarValuePixels: function(datasetIndex, index) {
@@ -6561,8 +6549,7 @@ module.exports = function(Chart) {
 			};
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		calculateBarIndexPixels: function(datasetIndex, index, ruler) {
 			var me = this;
@@ -6687,15 +6674,13 @@ module.exports = function(Chart) {
 	};
 
 	Chart.controllers.horizontalBar = Chart.controllers.bar.extend({
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getValueScaleId: function() {
 			return this.getMeta().xAxisID;
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		getIndexScaleId: function() {
 			return this.getMeta().yAxisID;
@@ -7893,8 +7878,7 @@ module.exports = function(Chart) {
 		dropFrames: 0,
 		request: null,
 
-		/**
-		 * @param {Chart} chart - The chart to animate.
+		/**		 * @param {Chart} chart - The chart to animate.
 		 * @param {Chart.Animation} animation - The animation that we will animate.
 		 * @param {Number} duration - The animation duration in ms.
 		 * @param {Boolean} lazy - if true, the chart is not marked as animating to enable more responsive interactions
@@ -7948,8 +7932,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		startDigest: function() {
 			var me = this;
@@ -7973,8 +7956,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		advance: function(count) {
 			var animations = this.animations;
@@ -8002,8 +7984,7 @@ module.exports = function(Chart) {
 		}
 	};
 
-	/**
-	 * Provided for backward compatibility, use Chart.Animation instead
+	/**	 * Provided for backward compatibility, use Chart.Animation instead
 	 * @prop Chart.Animation#animationObject
 	 * @deprecated since version 2.6.0
 	 * @todo remove at version 3
@@ -8014,8 +7995,7 @@ module.exports = function(Chart) {
 		}
 	});
 
-	/**
-	 * Provided for backward compatibility, use Chart.Animation#chart instead
+	/**	 * Provided for backward compatibility, use Chart.Animation#chart instead
 	 * @prop Chart.Animation#chartInstance
 	 * @deprecated since version 2.6.0
 	 * @todo remove at version 3
@@ -8202,8 +8182,7 @@ module.exports = function(Chart) {
 	// Controllers available for dataset visualization eg. bar, line, slice, etc.
 	Chart.controllers = {};
 
-	/**
-	 * Initializes the given config with global and chart default values.
+	/**	 * Initializes the given config with global and chart default values.
 	 */
 	function initConfig(config) {
 		config = config || {};
@@ -8222,8 +8201,7 @@ module.exports = function(Chart) {
 		return config;
 	}
 
-	/**
-	 * Updates the config of the chart
+	/**	 * Updates the config of the chart
 	 * @param chart {Chart} chart to update the options for
 	 */
 	function updateConfig(chart) {
@@ -8247,8 +8225,7 @@ module.exports = function(Chart) {
 	}
 
 	helpers.extend(Chart.prototype, /** @lends Chart */ {
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		construct: function(item, config) {
 			var me = this;
@@ -8270,8 +8247,7 @@ module.exports = function(Chart) {
 			me.options = config.options;
 			me._bufferedRender = false;
 
-			/**
-			 * Provided for backward compatibility, Chart and Chart.Controller have been merged,
+			/**			 * Provided for backward compatibility, Chart and Chart.Controller have been merged,
 			 * the "instance" still need to be defined since it might be called from plugins.
 			 * @prop Chart#chart
 			 * @deprecated since version 2.6.0
@@ -8307,8 +8283,7 @@ module.exports = function(Chart) {
 			me.update();
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		initialize: function() {
 			var me = this;
@@ -8402,8 +8377,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Builds a map of scale ID to scale object for future lookup.
+		/**		 * Builds a map of scale ID to scale object for future lookup.
 		 */
 		buildScales: function() {
 			var me = this;
@@ -8501,8 +8475,7 @@ module.exports = function(Chart) {
 			return newControllers;
 		},
 
-		/**
-		 * Reset the elements of all datasets
+		/**		 * Reset the elements of all datasets
 		 * @private
 		 */
 		resetElements: function() {
@@ -8512,8 +8485,7 @@ module.exports = function(Chart) {
 			}, me);
 		},
 
-		/**
-		* Resets the chart back to it's state before the initial animation
+		/**		* Resets the chart back to it's state before the initial animation
 		*/
 		reset: function() {
 			this.resetElements();
@@ -8562,8 +8534,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Updates the chart layout unless a plugin returns `false` to the `beforeLayout`
+		/**		 * Updates the chart layout unless a plugin returns `false` to the `beforeLayout`
 		 * hook, in which case, plugins will not be called on `afterLayout`.
 		 * @private
 		 */
@@ -8576,8 +8547,7 @@ module.exports = function(Chart) {
 
 			Chart.layoutService.update(this, this.width, this.height);
 
-			/**
-			 * Provided for backward compatibility, use `afterLayout` instead.
+			/**			 * Provided for backward compatibility, use `afterLayout` instead.
 			 * @method IPlugin#afterScaleUpdate
 			 * @deprecated since version 2.5.0
 			 * @todo remove at version 3
@@ -8587,8 +8557,7 @@ module.exports = function(Chart) {
 			plugins.notify(me, 'afterLayout');
 		},
 
-		/**
-		 * Updates all datasets unless a plugin returns `false` to the `beforeDatasetsUpdate`
+		/**		 * Updates all datasets unless a plugin returns `false` to the `beforeDatasetsUpdate`
 		 * hook, in which case, plugins will not be called on `afterDatasetsUpdate`.
 		 * @private
 		 */
@@ -8606,8 +8575,7 @@ module.exports = function(Chart) {
 			plugins.notify(me, 'afterDatasetsUpdate');
 		},
 
-		/**
-		 * Updates dataset at index unless a plugin returns `false` to the `beforeDatasetUpdate`
+		/**		 * Updates dataset at index unless a plugin returns `false` to the `beforeDatasetUpdate`
 		 * hook, in which case, plugins will not be called on `afterDatasetUpdate`.
 		 * @private
 		 */
@@ -8701,8 +8669,7 @@ module.exports = function(Chart) {
 			plugins.notify(me, 'afterDraw', [easingValue]);
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		transition: function(easingValue) {
 			var me = this;
@@ -8716,8 +8683,7 @@ module.exports = function(Chart) {
 			me.tooltip.transition(easingValue);
 		},
 
-		/**
-		 * Draws all datasets unless a plugin returns `false` to the `beforeDatasetsDraw`
+		/**		 * Draws all datasets unless a plugin returns `false` to the `beforeDatasetsDraw`
 		 * hook, in which case, plugins will not be called on `afterDatasetsDraw`.
 		 * @private
 		 */
@@ -8738,8 +8704,7 @@ module.exports = function(Chart) {
 			plugins.notify(me, 'afterDatasetsDraw', [easingValue]);
 		},
 
-		/**
-		 * Draws dataset at index unless a plugin returns `false` to the `beforeDatasetDraw`
+		/**		 * Draws dataset at index unless a plugin returns `false` to the `beforeDatasetDraw`
 		 * hook, in which case, plugins will not be called on `afterDatasetDraw`.
 		 * @private
 		 */
@@ -8877,8 +8842,7 @@ module.exports = function(Chart) {
 			me.tooltip.initialize();
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		bindEvents: function() {
 			var me = this;
@@ -8906,8 +8870,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		unbindEvents: function() {
 			var me = this;
@@ -8934,8 +8897,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		eventHandler: function(e) {
 			var me = this;
@@ -8973,8 +8935,7 @@ module.exports = function(Chart) {
 			return me;
 		},
 
-		/**
-		 * Handle an event
+		/**		 * Handle an event
 		 * @private
 		 * @param {IEvent} event the event to handle
 		 * @return {Boolean} true if the chart needs to re-render
@@ -9026,8 +8987,7 @@ module.exports = function(Chart) {
 		}
 	});
 
-	/**
-	 * Provided for backward compatibility, use Chart instead.
+	/**	 * Provided for backward compatibility, use Chart instead.
 	 * @class Chart.Controller
 	 * @deprecated since version 2.6.0
 	 * @todo remove at version 3
@@ -9045,8 +9005,7 @@ module.exports = function(Chart) {
 
 	var arrayEvents = ['push', 'pop', 'shift', 'splice', 'unshift'];
 
-	/**
-	 * Hooks the array methods that add or remove values ('push', pop', 'shift', 'splice',
+	/**	 * Hooks the array methods that add or remove values ('push', pop', 'shift', 'splice',
 	 * 'unshift') and notify the listener AFTER the array has been altered. Listeners are
 	 * called on the 'onData*' callbacks (e.g. onDataPush, etc.) with same arguments.
 	 */
@@ -9087,8 +9046,7 @@ module.exports = function(Chart) {
 		});
 	}
 
-	/**
-	 * Removes the given array event listener and cleanup extra attached properties (such as
+	/**	 * Removes the given array event listener and cleanup extra attached properties (such as
 	 * the _chartjs stub and overridden methods) if array doesn't have any more listeners.
 	 */
 	function unlistenArrayEvents(array, listener) {
@@ -9121,14 +9079,12 @@ module.exports = function(Chart) {
 
 	helpers.extend(Chart.DatasetController.prototype, {
 
-		/**
-		 * Element type used to generate a meta dataset (e.g. Chart.element.Line).
+		/**		 * Element type used to generate a meta dataset (e.g. Chart.element.Line).
 		 * @type {Chart.core.element}
 		 */
 		datasetElementType: null,
 
-		/**
-		 * Element type used to generate a meta data (e.g. Chart.element.Point).
+		/**		 * Element type used to generate a meta data (e.g. Chart.element.Point).
 		 * @type {Chart.core.element}
 		 */
 		dataElementType: null,
@@ -9174,8 +9130,7 @@ module.exports = function(Chart) {
 			this.update(true);
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		destroy: function() {
 			if (this._data) {
@@ -9302,8 +9257,7 @@ module.exports = function(Chart) {
 			model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : valueOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		resyncElements: function() {
 			var me = this;
@@ -9319,8 +9273,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		insertElements: function(start, count) {
 			for (var i=0; i<count; ++i) {
@@ -9328,37 +9281,32 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		onDataPush: function() {
 			this.insertElements(this.getDataset().data.length-1, arguments.length);
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		onDataPop: function() {
 			this.getMeta().data.pop();
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		onDataShift: function() {
 			this.getMeta().data.shift();
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		onDataSplice: function(start, count) {
 			this.getMeta().data.splice(start, count);
 			this.insertElements(start, arguments.length - 2);
 		},
 
-		/**
-		 * @private
+		/**		 * @private
 		 */
 		onDataUnshift: function() {
 			this.insertElements(0, arguments.length);
@@ -10249,8 +10197,7 @@ module.exports = function(Chart) {
 		return valueInPixels;
 	}
 
-	/**
-	 * Returns if the given value contains an effective constraint.
+	/**	 * Returns if the given value contains an effective constraint.
 	 * @private
 	 */
 	function isConstrainedValue(value) {
@@ -10466,8 +10413,7 @@ module.exports = function(Chart) {
 			helpers.color(colorValue).saturate(0.5).darken(0.1).rgbString();
 	};
 
-	/**
-	 * Provided for backward compatibility, use Chart.helpers#callback instead.
+	/**	 * Provided for backward compatibility, use Chart.helpers#callback instead.
 	 * @function Chart.helpers#callCallback
 	 * @deprecated since version 2.6.0
 	 * @todo remove at version 3
@@ -10481,8 +10427,7 @@ module.exports = function(Chart) {
 module.exports = function(Chart) {
 	var helpers = Chart.helpers;
 
-	/**
-	 * Helper function to get relative position for an event
+	/**	 * Helper function to get relative position for an event
 	 * @param {Event|IEvent} event - The event to get the position for
 	 * @param {Chart} chart - The chart
 	 * @returns {Point} the event position
@@ -10498,8 +10443,7 @@ module.exports = function(Chart) {
 		return helpers.getRelativePosition(e, chart);
 	}
 
-	/**
-	 * Helper function to traverse all of the visible elements in the chart
+	/**	 * Helper function to traverse all of the visible elements in the chart
 	 * @param chart {chart} the chart
 	 * @param handler {Function} the callback to execute for each visible item
 	 */
@@ -10522,8 +10466,7 @@ module.exports = function(Chart) {
 		}
 	}
 
-	/**
-	 * Helper function to get the items that intersect the event position
+	/**	 * Helper function to get the items that intersect the event position
 	 * @param items {ChartElement[]} elements to filter
 	 * @param position {Point} the point to be nearest to
 	 * @return {ChartElement[]} the nearest items
@@ -10540,8 +10483,7 @@ module.exports = function(Chart) {
 		return elements;
 	}
 
-	/**
-	 * Helper function to get the items nearest to the event position considering all visible items in teh chart
+	/**	 * Helper function to get the items nearest to the event position considering all visible items in teh chart
 	 * @param chart {Chart} the chart to look at elements from
 	 * @param position {Point} the point to be nearest to
 	 * @param intersect {Boolean} if true, only consider items that intersect the position
@@ -10603,17 +10545,14 @@ module.exports = function(Chart) {
 		return elements;
 	}
 
-	/**
-	 * @interface IInteractionOptions
+	/**	 * @interface IInteractionOptions
 	 */
-	/**
-	 * If true, only consider items that intersect the point
+	/**	 * If true, only consider items that intersect the point
 	 * @name IInterfaceOptions#boolean
 	 * @type Boolean
 	 */
 
-	/**
-	 * Contains interaction related functions
+	/**	 * Contains interaction related functions
 	 * @namespace Chart.Interaction
 	 */
 	Chart.Interaction = {
@@ -10633,16 +10572,14 @@ module.exports = function(Chart) {
 				return elements.slice(0, 1);
 			},
 
-			/**
-			 * @function Chart.Interaction.modes.label
+			/**			 * @function Chart.Interaction.modes.label
 			 * @deprecated since version 2.4.0
 	 		 * @todo remove at version 3
 			 * @private
 			 */
 			label: indexMode,
 
-			/**
-			 * Returns items at the same index. If the options.intersect parameter is true, we only return items if we intersect something
+			/**			 * Returns items at the same index. If the options.intersect parameter is true, we only return items if we intersect something
 			 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
 			 * @function Chart.Interaction.modes.index
 			 * @since v2.4.0
@@ -10653,8 +10590,7 @@ module.exports = function(Chart) {
 			 */
 			index: indexMode,
 
-			/**
-			 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
+			/**			 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
 			 * If the options.intersect is false, we find the nearest item and return the items in that dataset
 			 * @function Chart.Interaction.modes.dataset
 			 * @param chart {chart} the chart we are returning items from
@@ -10673,8 +10609,7 @@ module.exports = function(Chart) {
 				return items;
 			},
 
-			/**
-			 * @function Chart.Interaction.modes.x-axis
+			/**			 * @function Chart.Interaction.modes.x-axis
 			 * @deprecated since version 2.4.0. Use index mode and intersect == true
 			 * @todo remove at version 3
 			 * @private
@@ -10683,8 +10618,7 @@ module.exports = function(Chart) {
 				return indexMode(chart, e, true);
 			},
 
-			/**
-			 * Point mode returns all elements that hit test based on the event position
+			/**			 * Point mode returns all elements that hit test based on the event position
 			 * of the event
 			 * @function Chart.Interaction.modes.intersect
 			 * @param chart {chart} the chart we are returning items from
@@ -10696,8 +10630,7 @@ module.exports = function(Chart) {
 				return getIntersectItems(chart, position);
 			},
 
-			/**
-			 * nearest mode returns the element closest to the point
+			/**			 * nearest mode returns the element closest to the point
 			 * @function Chart.Interaction.modes.intersect
 			 * @param chart {chart} the chart we are returning items from
 			 * @param e {Event} the event we are find things at
@@ -10728,8 +10661,7 @@ module.exports = function(Chart) {
 				return nearestItems.slice(0, 1);
 			},
 
-			/**
-			 * x mode returns the elements that hit-test at the current x coordinate
+			/**			 * x mode returns the elements that hit-test at the current x coordinate
 			 * @function Chart.Interaction.modes.x
 			 * @param chart {chart} the chart we are returning items from
 			 * @param e {Event} the event we are find things at
@@ -10759,8 +10691,7 @@ module.exports = function(Chart) {
 				return items;
 			},
 
-			/**
-			 * y mode returns the elements that hit-test at the current y coordinate
+			/**			 * y mode returns the elements that hit-test at the current y coordinate
 			 * @function Chart.Interaction.modes.y
 			 * @param chart {chart} the chart we are returning items from
 			 * @param e {Event} the event we are find things at
@@ -10881,8 +10812,7 @@ module.exports = function(Chart) {
 		});
 	}
 
-	/**
-	 * @interface ILayoutItem
+	/**	 * @interface ILayoutItem
 	 * @prop {String} position - The position of the item in the chart layout. Possible values are
 	 * 'left', 'top', 'right', 'bottom', and 'chartArea'
 	 * @prop {Number} weight - The weight used to sort the item. Higher weights are further away from the chart area
@@ -10904,8 +10834,7 @@ module.exports = function(Chart) {
 	Chart.layoutService = {
 		defaults: {},
 
-		/**
-		 * Register a box to a chart.
+		/**		 * Register a box to a chart.
 		 * A box is simply a reference to an object that requires layout. eg. Scales, Legend, Title.
 		 * @param {Chart} chart - the chart to use
 		 * @param {ILayoutItem} item - the item to add to be layed out
@@ -10923,8 +10852,7 @@ module.exports = function(Chart) {
 			chart.boxes.push(item);
 		},
 
-		/**
-		 * Remove a layoutItem from a chart
+		/**		 * Remove a layoutItem from a chart
 		 * @param {Chart} chart - the chart to remove the box from
 		 * @param {Object} layoutItem - the item to remove from the layout
 		 */
@@ -10935,8 +10863,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Sets (or updates) options on the given `item`.
+		/**		 * Sets (or updates) options on the given `item`.
 		 * @param {Chart} chart - the chart in which the item lives (or will be added to)
 		 * @param {Object} item - the item to configure with the given options
 		 * @param {Object} options - the new item options.
@@ -10955,8 +10882,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Fits boxes of the given chart into the given size by having each box measure itself
+		/**		 * Fits boxes of the given chart into the given size by having each box measure itself
 		 * then running a fitting algorithm
 		 * @param {Chart} chart - the chart
 		 * @param {Number} width - the width to fit into
@@ -11298,28 +11224,24 @@ module.exports = function(Chart) {
 
 	Chart.defaults.global.plugins = {};
 
-	/**
-	 * The plugin service singleton
+	/**	 * The plugin service singleton
 	 * @namespace Chart.plugins
 	 * @since 2.1.0
 	 */
 	Chart.plugins = {
-		/**
-		 * Globally registered plugins.
+		/**		 * Globally registered plugins.
 		 * @private
 		 */
 		_plugins: [],
 
-		/**
-		 * This identifier is used to invalidate the descriptors cache attached to each chart
+		/**		 * This identifier is used to invalidate the descriptors cache attached to each chart
 		 * when a global plugin is registered or unregistered. In this case, the cache ID is
 		 * incremented and descriptors are regenerated during following API calls.
 		 * @private
 		 */
 		_cacheId: 0,
 
-		/**
-		 * Registers the given plugin(s) if not already registered.
+		/**		 * Registers the given plugin(s) if not already registered.
 		 * @param {Array|Object} plugins plugin instance(s).
 		 */
 		register: function(plugins) {
@@ -11333,8 +11255,7 @@ module.exports = function(Chart) {
 			this._cacheId++;
 		},
 
-		/**
-		 * Unregisters the given plugin(s) only if registered.
+		/**		 * Unregisters the given plugin(s) only if registered.
 		 * @param {Array|Object} plugins plugin instance(s).
 		 */
 		unregister: function(plugins) {
@@ -11349,8 +11270,7 @@ module.exports = function(Chart) {
 			this._cacheId++;
 		},
 
-		/**
-		 * Remove all registered plugins.
+		/**		 * Remove all registered plugins.
 		 * @since 2.1.5
 		 */
 		clear: function() {
@@ -11358,8 +11278,7 @@ module.exports = function(Chart) {
 			this._cacheId++;
 		},
 
-		/**
-		 * Returns the number of registered plugins?
+		/**		 * Returns the number of registered plugins?
 		 * @returns {Number}
 		 * @since 2.1.5
 		 */
@@ -11367,8 +11286,7 @@ module.exports = function(Chart) {
 			return this._plugins.length;
 		},
 
-		/**
-		 * Returns all registered plugin instances.
+		/**		 * Returns all registered plugin instances.
 		 * @returns {Array} array of plugin objects.
 		 * @since 2.1.5
 		 */
@@ -11376,8 +11294,7 @@ module.exports = function(Chart) {
 			return this._plugins;
 		},
 
-		/**
-		 * Calls enabled plugins for `chart` on the specified hook and with the given args.
+		/**		 * Calls enabled plugins for `chart` on the specified hook and with the given args.
 		 * This method immediately returns as soon as a plugin explicitly returns false. The
 		 * returned value can be used, for instance, to interrupt the current action.
 		 * @param {Object} chart - The chart instance for which plugins should be called.
@@ -11406,8 +11323,7 @@ module.exports = function(Chart) {
 			return true;
 		},
 
-		/**
-		 * Returns descriptors of enabled plugins for the given chart.
+		/**		 * Returns descriptors of enabled plugins for the given chart.
 		 * @returns {Array} [{ plugin, options }]
 		 * @private
 		 */
@@ -11452,40 +11368,34 @@ module.exports = function(Chart) {
 		}
 	};
 
-	/**
-	 * Plugin extension hooks.
+	/**	 * Plugin extension hooks.
 	 * @interface IPlugin
 	 * @since 2.1.0
 	 */
-	/**
-	 * @method IPlugin#beforeInit
+	/**	 * @method IPlugin#beforeInit
 	 * @desc Called before initializing `chart`.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#afterInit
+	/**	 * @method IPlugin#afterInit
 	 * @desc Called after `chart` has been initialized and before the first update.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeUpdate
+	/**	 * @method IPlugin#beforeUpdate
 	 * @desc Called before updating `chart`. If any plugin returns `false`, the update
 	 * is cancelled (and thus subsequent render(s)) until another `update` is triggered.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart update.
 	 */
-	/**
-	 * @method IPlugin#afterUpdate
+	/**	 * @method IPlugin#afterUpdate
 	 * @desc Called after `chart` has been updated and before rendering. Note that this
 	 * hook will not be called if the chart update has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeDatasetsUpdate
+	/**	 * @method IPlugin#beforeDatasetsUpdate
  	 * @desc Called before updating the `chart` datasets. If any plugin returns `false`,
 	 * the datasets update is cancelled until another `update` is triggered.
 	 * @param {Chart.Controller} chart - The chart instance.
@@ -11493,16 +11403,14 @@ module.exports = function(Chart) {
 	 * @returns {Boolean} false to cancel the datasets update.
 	 * @since version 2.1.5
 	 */
-	/**
-	 * @method IPlugin#afterDatasetsUpdate
+	/**	 * @method IPlugin#afterDatasetsUpdate
 	 * @desc Called after the `chart` datasets have been updated. Note that this hook
 	 * will not be called if the datasets update has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 * @since version 2.1.5
 	 */
-	/**
-	 * @method IPlugin#beforeDatasetUpdate
+	/**	 * @method IPlugin#beforeDatasetUpdate
  	 * @desc Called before updating the `chart` dataset at the given `args.index`. If any plugin
 	 * returns `false`, the datasets update is cancelled until another `update` is triggered.
 	 * @param {Chart} chart - The chart instance.
@@ -11512,8 +11420,7 @@ module.exports = function(Chart) {
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart datasets drawing.
 	 */
-	/**
-	 * @method IPlugin#afterDatasetUpdate
+	/**	 * @method IPlugin#afterDatasetUpdate
  	 * @desc Called after the `chart` datasets at the given `args.index` has been updated. Note
 	 * that this hook will not be called if the datasets update has been previously cancelled.
 	 * @param {Chart} chart - The chart instance.
@@ -11522,38 +11429,33 @@ module.exports = function(Chart) {
 	 * @param {Number} args.meta - The dataset metadata.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeLayout
+	/**	 * @method IPlugin#beforeLayout
 	 * @desc Called before laying out `chart`. If any plugin returns `false`,
 	 * the layout update is cancelled until another `update` is triggered.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart layout.
 	 */
-	/**
-	 * @method IPlugin#afterLayout
+	/**	 * @method IPlugin#afterLayout
 	 * @desc Called after the `chart` has been layed out. Note that this hook will not
 	 * be called if the layout update has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeRender
+	/**	 * @method IPlugin#beforeRender
 	 * @desc Called before rendering `chart`. If any plugin returns `false`,
 	 * the rendering is cancelled until another `render` is triggered.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart rendering.
 	 */
-	/**
-	 * @method IPlugin#afterRender
+	/**	 * @method IPlugin#afterRender
 	 * @desc Called after the `chart` has been fully rendered (and animation completed). Note
 	 * that this hook will not be called if the rendering has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeDraw
+	/**	 * @method IPlugin#beforeDraw
 	 * @desc Called before drawing `chart` at every animation frame specified by the given
 	 * easing value. If any plugin returns `false`, the frame drawing is cancelled until
 	 * another `render` is triggered.
@@ -11562,16 +11464,14 @@ module.exports = function(Chart) {
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart drawing.
 	 */
-	/**
-	 * @method IPlugin#afterDraw
+	/**	 * @method IPlugin#afterDraw
 	 * @desc Called after the `chart` has been drawn for the specific easing value. Note
 	 * that this hook will not be called if the drawing has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeDatasetsDraw
+	/**	 * @method IPlugin#beforeDatasetsDraw
  	 * @desc Called before drawing the `chart` datasets. If any plugin returns `false`,
 	 * the datasets drawing is cancelled until another `render` is triggered.
 	 * @param {Chart.Controller} chart - The chart instance.
@@ -11579,16 +11479,14 @@ module.exports = function(Chart) {
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart datasets drawing.
 	 */
-	/**
-	 * @method IPlugin#afterDatasetsDraw
+	/**	 * @method IPlugin#afterDatasetsDraw
 	 * @desc Called after the `chart` datasets have been drawn. Note that this hook
 	 * will not be called if the datasets drawing has been previously cancelled.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeDatasetDraw
+	/**	 * @method IPlugin#beforeDatasetDraw
  	 * @desc Called before drawing the `chart` dataset at the given `args.index` (datasets
 	 * are drawn in the reverse order). If any plugin returns `false`, the datasets drawing
 	 * is cancelled until another `render` is triggered.
@@ -11600,8 +11498,7 @@ module.exports = function(Chart) {
 	 * @param {Object} options - The plugin options.
 	 * @returns {Boolean} `false` to cancel the chart datasets drawing.
 	 */
-	/**
-	 * @method IPlugin#afterDatasetDraw
+	/**	 * @method IPlugin#afterDatasetDraw
  	 * @desc Called after the `chart` datasets at the given `args.index` have been drawn
 	 * (datasets are drawn in the reverse order). Note that this hook will not be called
 	 * if the datasets drawing has been previously cancelled.
@@ -11612,38 +11509,33 @@ module.exports = function(Chart) {
 	 * @param {Number} args.easingValue - The current animation value, between 0.0 and 1.0.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#beforeEvent
+	/**	 * @method IPlugin#beforeEvent
  	 * @desc Called before processing the specified `event`. If any plugin returns `false`,
 	 * the event will be discarded.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {IEvent} event - The event object.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#afterEvent
+	/**	 * @method IPlugin#afterEvent
 	 * @desc Called after the `event` has been consumed. Note that this hook
 	 * will not be called if the `event` has been previously discarded.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {IEvent} event - The event object.
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#resize
+	/**	 * @method IPlugin#resize
 	 * @desc Called after the chart as been resized.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Number} size - The new canvas display size (eq. canvas.style width & height).
 	 * @param {Object} options - The plugin options.
 	 */
-	/**
-	 * @method IPlugin#destroy
+	/**	 * @method IPlugin#destroy
 	 * @desc Called after the chart as been destroyed.
 	 * @param {Chart.Controller} chart - The chart instance.
 	 * @param {Object} options - The plugin options.
 	 */
 
-	/**
-	 * Provided for backward compatibility, use Chart.plugins instead
+	/**	 * Provided for backward compatibility, use Chart.plugins instead
 	 * @namespace Chart.pluginService
 	 * @deprecated since version 2.1.5
 	 * @todo remove at version 3
@@ -11651,8 +11543,7 @@ module.exports = function(Chart) {
 	 */
 	Chart.pluginService = Chart.plugins;
 
-	/**
-	 * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
+	/**	 * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
 	 * effect, instead simply create/register plugins via plain JavaScript objects.
 	 * @interface Chart.PluginBase
 	 * @deprecated since version 2.5.0
@@ -11739,8 +11630,7 @@ module.exports = function(Chart) {
 	}
 
 	Chart.Scale = Chart.Element.extend({
-		/**
-		 * Get the padding needed for the scale
+		/**		 * Get the padding needed for the scale
 		 * @method getPadding
 		 * @private
 		 * @returns {Padding} the necessary padding
@@ -12033,8 +11923,7 @@ module.exports = function(Chart) {
 			me.height = minSize.height;
 		},
 
-		/**
-		 * Handle margins and padding interactions
+		/**		 * Handle margins and padding interactions
 		 * @private
 		 */
 		handleMargins: function() {
@@ -12474,46 +12363,38 @@ module.exports = function(Chart) {
 
 	var helpers = Chart.helpers;
 
-	/**
-	 * Namespace to hold static tick generation functions
+	/**	 * Namespace to hold static tick generation functions
 	 * @namespace Chart.Ticks
 	 */
 	Chart.Ticks = {
-		/**
-		 * Namespace to hold generators for different types of ticks
+		/**		 * Namespace to hold generators for different types of ticks
 		 * @namespace Chart.Ticks.generators
 		 */
 		generators: {
-			/**
-			 * Interface for the options provided to the numeric tick generator
+			/**			 * Interface for the options provided to the numeric tick generator
 			 * @interface INumericTickGenerationOptions
 			 */
-			/**
-			 * The maximum number of ticks to display
+			/**			 * The maximum number of ticks to display
 			 * @name INumericTickGenerationOptions#maxTicks
 			 * @type Number
 			 */
-			/**
-			 * The distance between each tick.
+			/**			 * The distance between each tick.
 			 * @name INumericTickGenerationOptions#stepSize
 			 * @type Number
 			 * @optional
 			 */
-			/**
-			 * Forced minimum for the ticks. If not specified, the minimum of the data range is used to calculate the tick minimum
+			/**			 * Forced minimum for the ticks. If not specified, the minimum of the data range is used to calculate the tick minimum
 			 * @name INumericTickGenerationOptions#min
 			 * @type Number
 			 * @optional
 			 */
-			/**
-			 * The maximum value of the ticks. If not specified, the maximum of the data range is used to calculate the tick maximum
+			/**			 * The maximum value of the ticks. If not specified, the maximum of the data range is used to calculate the tick maximum
 			 * @name INumericTickGenerationOptions#max
 			 * @type Number
 			 * @optional
 			 */
 
-			/**
-			 * Generate a set of linear ticks
+			/**			 * Generate a set of linear ticks
 			 * @method Chart.Ticks.generators.linear
 			 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
 			 * @param dataRange {IRange} the range of the data
@@ -12562,8 +12443,7 @@ module.exports = function(Chart) {
 				return ticks;
 			},
 
-			/**
-			 * Generate a set of logarithmic ticks
+			/**			 * Generate a set of logarithmic ticks
 			 * @method Chart.Ticks.generators.logarithmic
 			 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
 			 * @param dataRange {IRange} the range of the data
@@ -12614,13 +12494,11 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Namespace to hold formatters for different types of ticks
+		/**		 * Namespace to hold formatters for different types of ticks
 		 * @namespace Chart.Ticks.formatters
 		 */
 		formatters: {
-			/**
-			 * Formatter for value labels
+			/**			 * Formatter for value labels
 			 * @method Chart.Ticks.formatters.values
 			 * @param value the value to display
 			 * @return {String|Array} the label to display
@@ -12629,8 +12507,7 @@ module.exports = function(Chart) {
 				return helpers.isArray(value) ? value : '' + value;
 			},
 
-			/**
-			 * Formatter for linear numeric ticks
+			/**			 * Formatter for linear numeric ticks
 			 * @method Chart.Ticks.formatters.linear
 			 * @param tickValue {Number} the value to be formatted
 			 * @param index {Number} the position of the tickValue parameter in the ticks array
@@ -12684,8 +12561,7 @@ module.exports = function(Chart) {
 
 	var helpers = Chart.helpers;
 
-	/**
- 	 * Helper method to merge the opacity into a color
+	/** 	 * Helper method to merge the opacity into a color
  	 */
 	function mergeOpacity(colorString, opacity) {
 		var color = helpers.color(colorString);
@@ -12812,8 +12688,7 @@ module.exports = function(Chart) {
 		};
 	}
 
-	/**
-	 * Helper to get the reset model for the tooltip
+	/**	 * Helper to get the reset model for the tooltip
 	 * @param tooltipOpts {Object} the tooltip options
 	 */
 	function getBaseModel(tooltipOpts) {
@@ -12865,8 +12740,7 @@ module.exports = function(Chart) {
 		};
 	}
 
-	/**
-	 * Get the size of the tooltip
+	/**	 * Get the size of the tooltip
 	 */
 	function getTooltipSize(tooltip, model) {
 		var ctx = tooltip._chart.ctx;
@@ -12933,8 +12807,7 @@ module.exports = function(Chart) {
 		};
 	}
 
-	/**
-	 * Helper to get the alignment of a tooltip given the size
+	/**	 * Helper to get the alignment of a tooltip given the size
 	 */
 	function determineAlignment(tooltip, size) {
 		var model = tooltip._model;
@@ -13006,8 +12879,7 @@ module.exports = function(Chart) {
 		};
 	}
 
-	/**
-	 * @Helper to get the location a tooltip needs to be placed at given the initial position (via the vm) and the size and alignment
+	/**	 * @Helper to get the location a tooltip needs to be placed at given the initial position (via the vm) and the size and alignment
 	 */
 	function getBackgroundPoint(vm, size, alignment) {
 		// Background Position
@@ -13492,8 +13364,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Handle an event
+		/**		 * Handle an event
 		 * @private
 		 * @param {IEvent} event - The event to handle
 		 * @returns {Boolean} true if the tooltip changed
@@ -13540,12 +13411,10 @@ module.exports = function(Chart) {
 		}
 	});
 
-	/**
-	 * @namespace Chart.Tooltip.positioners
+	/**	 * @namespace Chart.Tooltip.positioners
 	 */
 	Chart.Tooltip.positioners = {
-		/**
-		 * Average mode places the tooltip at the average position of the elements shown
+		/**		 * Average mode places the tooltip at the average position of the elements shown
 		 * @function Chart.Tooltip.positioners.average
 		 * @param elements {ChartElement[]} the elements being displayed in the tooltip
 		 * @returns {Point} tooltip position
@@ -13576,8 +13445,7 @@ module.exports = function(Chart) {
 			};
 		},
 
-		/**
-		 * Gets the tooltip position nearest of the item nearest to the event position
+		/**		 * Gets the tooltip position nearest of the item nearest to the event position
 		 * @function Chart.Tooltip.positioners.nearest
 		 * @param elements {Chart.Element[]} the tooltip elements
 		 * @param eventPosition {Point} the position of the event in canvas coordinates
@@ -13932,8 +13800,7 @@ module.exports = function(Chart) {
 		return bar._view.width !== undefined;
 	}
 
-	/**
-	 * Helper function to get the bounds of the bar regardless of the orientation
+	/**	 * Helper function to get the bounds of the bar regardless of the orientation
 	 * @private
 	 * @param bar {Chart.Element.Rectangle} the bar
 	 * @return {Bounds} bounds of the bar
@@ -14149,8 +14016,7 @@ module.exports = function(Chart) {
 		pointerout: 'mouseout'
 	};
 
-	/**
-	 * The "used" size is the final value of a dimension property after all calculations have
+	/**	 * The "used" size is the final value of a dimension property after all calculations have
 	 * been performed. This method uses the computed style of `element` but returns undefined
 	 * if the computed style is not expressed in pixels. That can happen in some cases where
 	 * `element` has a size relative to its parent and this last one is not yet displayed,
@@ -14164,8 +14030,7 @@ module.exports = function(Chart) {
 		return matches? Number(matches[1]) : undefined;
 	}
 
-	/**
-	 * Initializes the canvas style and render size without modifying the canvas display size,
+	/**	 * Initializes the canvas style and render size without modifying the canvas display size,
 	 * since responsiveness is handled by the controller.resize() method. The config is used
 	 * to determine the aspect ratio to apply in case no explicit height has been specified.
 	 */
@@ -14417,14 +14282,12 @@ module.exports = function(Chart) {
 var implementation = require(39);
 
 module.exports = function(Chart) {
-	/**
-	 * @namespace Chart.platform
+	/**	 * @namespace Chart.platform
 	 * @see https://chartjs.gitbooks.io/proposals/content/Platform.html
 	 * @since 2.4.0
 	 */
 	Chart.platform = {
-		/**
-		 * Called at chart construction time, returns a context2d instance implementing
+		/**		 * Called at chart construction time, returns a context2d instance implementing
 		 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
 		 * @param {*} item - The native item from which to acquire context (platform specific)
 		 * @param {Object} options - The chart options
@@ -14432,16 +14295,14 @@ module.exports = function(Chart) {
 		 */
 		acquireContext: function() {},
 
-		/**
-		 * Called at chart destruction time, releases any resources associated to the context
+		/**		 * Called at chart destruction time, releases any resources associated to the context
 		 * previously returned by the acquireContext() method.
 		 * @param {CanvasRenderingContext2D} context - The context2d instance
 		 * @returns {Boolean} true if the method succeeded, else false
 		 */
 		releaseContext: function() {},
 
-		/**
-		 * Registers the specified listener on the given chart.
+		/**		 * Registers the specified listener on the given chart.
 		 * @param {Chart} chart - Chart from which to listen for event
 		 * @param {String} type - The ({@link IEvent}) type to listen for
 		 * @param {Function} listener - Receives a notification (an object that implements
@@ -14449,8 +14310,7 @@ module.exports = function(Chart) {
 		 */
 		addEventListener: function() {},
 
-		/**
-		 * Removes the specified listener previously registered with addEventListener.
+		/**		 * Removes the specified listener previously registered with addEventListener.
 		 * @param {Chart} chart -Chart from which to remove the listener
 		 * @param {String} type - The ({@link IEvent}) type to remove
 		 * @param {Function} listener - The listener function to remove from the event target.
@@ -14458,8 +14318,7 @@ module.exports = function(Chart) {
 		removeEventListener: function() {}
 	};
 
-	/**
-	 * @interface IPlatform
+	/**	 * @interface IPlatform
 	 * Allows abstracting platform dependencies away from the chart
 	 * @borrows Chart.platform.acquireContext as acquireContext
 	 * @borrows Chart.platform.releaseContext as releaseContext
@@ -14467,8 +14326,7 @@ module.exports = function(Chart) {
 	 * @borrows Chart.platform.removeEventListener as removeEventListener
 	 */
 
-	/**
-	 * @interface IEvent
+	/**	 * @interface IEvent
 	 * @prop {String} type - The event type name, possible values are:
 	 * 'contextmenu', 'mouseenter', 'mousedown', 'mousemove', 'mouseup', 'mouseout',
 	 * 'click', 'dblclick', 'keydown', 'keypress', 'keyup' and 'resize'
@@ -14484,8 +14342,7 @@ module.exports = function(Chart) {
 'use strict';
 
 module.exports = function(Chart) {
-	/**
-	 * Plugin based on discussion from the following Chart.js issues:
+	/**	 * Plugin based on discussion from the following Chart.js issues:
 	 * @see https://github.com/chartjs/Chart.js/issues/2380#issuecomment-279961569
 	 * @see https://github.com/chartjs/Chart.js/issues/2440#issuecomment-256461897
 	 */
@@ -14859,8 +14716,7 @@ module.exports = function(Chart) {
 		}
 	};
 
-	/**
-	 * Helper function to get the box width based on the usePointStyle option
+	/**	 * Helper function to get the box width based on the usePointStyle option
 	 * @param labelopts {Object} the label options on the legend
 	 * @param fontSize {Number} the label font size
 	 * @return {Number} width of the color box area
@@ -15231,8 +15087,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		/**
-		 * Handle an event
+		/**		 * Handle an event
 		 * @private
 		 * @param {IEvent} event - The event to handle
 		 * @return {Boolean} true if a change occured
@@ -15577,8 +15432,7 @@ module.exports = function(Chart) {
 	};
 
 	var DatasetScale = Chart.Scale.extend({
-		/**
-		* Internal function to get the correct labels. If data.xLabels or data.yLabels are defined, use those
+		/**		* Internal function to get the correct labels. If data.xLabels or data.yLabels are defined, use those
 		* else fall back to data.labels
 		* @private
 		*/
@@ -16356,8 +16210,7 @@ module.exports = function(Chart) {
 		};
 	}
 
-	/**
-	 * Helper function to fit a radial linear scale with point labels
+	/**	 * Helper function to fit a radial linear scale with point labels
 	 */
 	function fitWithPointLabels(scale) {
 		/*
@@ -16443,8 +16296,7 @@ module.exports = function(Chart) {
 		scale.setReductions(largestPossibleRadius, furthestLimits, furthestAngles);
 	}
 
-	/**
-	 * Helper function to fit a radial linear scale with no point labels
+	/**	 * Helper function to fit a radial linear scale with no point labels
 	 */
 	function fit(scale) {
 		var largestPossibleRadius = Math.min(scale.height / 2, scale.width / 2);
@@ -16631,8 +16483,7 @@ module.exports = function(Chart) {
 				fit(this);
 			}
 		},
-		/**
-		 * Set radius reductions and determine new radius and center point
+		/**		 * Set radius reductions and determine new radius and center point
 		 * @private
 		 */
 		setReductions: function(largestPossibleRadius, furthestLimits, furthestAngles) {
@@ -16851,8 +16702,7 @@ module.exports = function(Chart) {
 		}
 	};
 
-	/**
-	 * Helper function to parse time to a moment object
+	/**	 * Helper function to parse time to a moment object
 	 * @param axis {TimeAxis} the time axis
 	 * @param label {Date|string|number|Moment} The thing to parse
 	 * @return {Moment} parsed time
@@ -16883,8 +16733,7 @@ module.exports = function(Chart) {
 		return moment(label, format);
 	}
 
-	/**
-	 * Figure out which is the best unit for the scale
+	/**	 * Figure out which is the best unit for the scale
 	 * @param minUnit {String} minimum unit to use
 	 * @param min {Number} scale minimum
 	 * @param max {Number} scale maximum
@@ -16907,8 +16756,7 @@ module.exports = function(Chart) {
 		return unit;
 	}
 
-	/**
-	 * Determines how we scale the unit
+	/**	 * Determines how we scale the unit
 	 * @param min {Number} the scale minimum
 	 * @param max {Number} the scale maximum
 	 * @param unit {String} the unit determined by the {@see determineUnit} method
@@ -16939,8 +16787,7 @@ module.exports = function(Chart) {
 		return multiplier;
 	}
 
-	/**
-	 * Helper for generating axis labels.
+	/**	 * Helper for generating axis labels.
 	 * @param options {ITimeGeneratorOptions} the options for generation
 	 * @param dataRange {IRange} the data range
 	 * @param niceRange {IRange} the pretty range to display
@@ -16963,8 +16810,7 @@ module.exports = function(Chart) {
 		return ticks;
 	}
 
-	/**
-	 * @function Chart.Ticks.generators.time
+	/**	 * @function Chart.Ticks.generators.time
 	 * @param options {ITimeGeneratorOptions} the options for generation
 	 * @param dataRange {IRange} the data range
 	 * @return {Number[]} ticks
